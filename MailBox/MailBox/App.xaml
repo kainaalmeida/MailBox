@@ -3,7 +3,9 @@
     x:Class="MailBox.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:MailBox.Converter"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:MailBox.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Application.Resources>
@@ -11,6 +13,58 @@
             <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
                 <On Platform="UWP" Value="/Assets/FontAwesome5Solid.otf#Font Awesome 5 Free" />
             </OnPlatform>
+
+            <converter:IntToBoolConverter x:Key="IntToBoolConverter" />
+
+            <FontImageSource
+                x:Key="imgClip"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Paperclip}"
+                Size="12"
+                Color="#1FB5EB" />
+
+            <FontImageSource
+                x:Key="imgClipGray"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Paperclip}"
+                Size="12"
+                Color="Gray" />
+
+            <FontImageSource
+                x:Key="imgSent"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.PaperPlane}"
+                Size="12"
+                Color="#1FB5EB" />
+
+            <FontImageSource
+                x:Key="imgReply"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Reply}"
+                Size="12"
+                Color="Gray" />
+
+            <FontImageSource
+                x:Key="imgReplyAll"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.ReplyAll}"
+                Size="12"
+                Color="Gray" />
+
+            <FontImageSource
+                x:Key="imgFolder"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Folder}"
+                Size="12"
+                Color="Gray" />
+
+            <FontImageSource
+                x:Key="imgTrash"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Trash}"
+                Size="12"
+                Color="Gray" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

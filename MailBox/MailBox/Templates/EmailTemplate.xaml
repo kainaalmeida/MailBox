@@ -3,25 +3,10 @@
     x:Class="MailBox.Templates.EmailTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converter="clr-namespace:MailBox.Converter"
     xmlns:customs="clr-namespace:MailBox.Customs"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:fontawesome="clr-namespace:MailBox.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <converter:IntToBoolConverter x:Key="IntToBoolConverter" />
-
-            <FontImageSource
-                x:Key="imgClip"
-                FontFamily="{StaticResource FontAwesomeSolid}"
-                Glyph="{x:Static fontawesome:FontAwesomeIcons.Paperclip}"
-                Size="12"
-                Color="#1FB5EB" />
-
-        </ResourceDictionary>
-    </ContentView.Resources>
     <ContentView.Content>
         <Frame
             Padding="20"

@@ -6,7 +6,8 @@
     xmlns:customs="clr-namespace:MailBox.Customs"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="clr-namespace:MailBox.ViewModels" xmlns:templates="clr-namespace:MailBox.Templates"
+    xmlns:templates="clr-namespace:MailBox.Templates"
+    xmlns:viewModels="clr-namespace:MailBox.ViewModels"
     mc:Ignorable="d">
 
     <ContentPage.BindingContext>
@@ -105,21 +106,181 @@
                 Grid.Row="1"
                 Margin="20,0"
                 ItemsSource="{Binding Emails}"
+                SelectedItem="{Binding EmailBoxSelected}"
+                SelectionMode="Single"
                 VerticalOptions="Center">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <templates:EmailTemplate/>
+                        <templates:EmailTemplate />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
         </StackLayout>
 
-        <StackLayout Grid.Column="2" BackgroundColor="White" />
+        <ScrollView
+            Grid.Column="2"
+            BackgroundColor="White"
+            IsVisible="{Binding ShowEmail}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
 
+                <StackLayout
+                    Margin="105,20,0,50"
+                    Orientation="Horizontal"
+                    Spacing="30">
+                    <ImageButton
+                        HeightRequest="30"
+                        Source="{StaticResource imgReply}"
+                        WidthRequest="30" />
+                    <ImageButton
+                        HeightRequest="30"
+                        Source="{StaticResource imgReplyAll}"
+                        WidthRequest="30" />
+                    <ImageButton
+                        HeightRequest="30"
+                        Source="{StaticResource imgFolder}"
+                        WidthRequest="30" />
+                    <ImageButton
+                        HeightRequest="30"
+                        Source="{StaticResource imgTrash}"
+                        WidthRequest="30" />
+
+                </StackLayout>
+
+                <Grid Grid.Row="1" Margin="40,0,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="0"
+                        Aspect="AspectFit"
+                        HeightRequest="60"
+                        Source="{Binding EmailBoxSelected.Img}"
+                        VerticalOptions="Center"
+                        WidthRequest="60" />
+
+                    <StackLayout
+                        Grid.Column="1"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{Binding EmailBoxSelected.Name}"
+                            TextColor="Black" />
+                        <Label Text="{Binding EmailBoxSelected.Subject}" TextColor="Black" />
+                        <Label Text="{Binding EmailBoxSelected.Email}" TextColor="Black" />
+                    </StackLayout>
+                </Grid>
+
+                <StackLayout
+                    Grid.Row="2"
+                    Margin="105,0,0,20"
+                    Orientation="Horizontal">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="{Binding EmailBoxSelected.EmailDate}" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="{Binding EmailBoxSelected.EmailHour}" />
+                </StackLayout>
+
+                <Label
+                    Grid.Row="3"
+                    Margin="105,0,0,20"
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    Text="Hi Mike,"
+                    TextColor="Black" />
+
+                <Label
+                    Grid.Row="4"
+                    Margin="105,0,20,20"
+                    FontSize="Micro"
+                    HorizontalTextAlignment="Start"
+                    Text="{Binding EmailBoxSelected.Content}" />
+
+                <StackLayout
+                    Grid.Row="5"
+                    Margin="105,0,0,20"
+                    IsVisible="{Binding EmailBoxSelected.Attachments, Converter={StaticResource IntToBoolConverter}}"
+                    Orientation="Horizontal">
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="20"
+                        Source="{StaticResource imgClip}"
+                        WidthRequest="20" />
+                    <Label
+                        FontSize="Micro"
+                        Text="{Binding EmailBoxSelected.Attachments}"
+                        TextColor="#1FB5EB" />
+                    <Label
+                        FontSize="Micro"
+                        Text="Attachments"
+                        TextColor="#1FB5EB" />
+                </StackLayout>
+
+                <FlexLayout
+                    Grid.Row="6"
+                    Margin="105,0,0,20"
+                    BindableLayout.ItemsSource="{Binding EmailBoxSelected.AttachmentsItems}"
+                    Direction="Row"
+                    IsVisible="{Binding EmailBoxSelected.Attachments, Converter={StaticResource IntToBoolConverter}}"
+                    JustifyContent="Start"
+                    Wrap="Wrap">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Image
+                                Margin="5"
+                                Aspect="AspectFill"
+                                HeightRequest="80"
+                                Source="{Binding .}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+                <Frame
+                    Grid.Row="7"
+                    Margin="105,0,20,0"
+                    Padding="0"
+                    BorderColor="Gray"
+                    CornerRadius="10"
+                    VerticalOptions="Start">
+                    <StackLayout Orientation="Horizontal" Spacing="15">
+                        <Entry HorizontalOptions="FillAndExpand" Placeholder="Type Message..." />
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="15"
+                            Source="{StaticResource imgClipGray}"
+                            WidthRequest="15" />
+                        <Image
+                            Margin="0,0,10,0"
+                            Aspect="AspectFit"
+                            HeightRequest="15"
+                            Source="{StaticResource imgSent}"
+                            WidthRequest="15" />
+                    </StackLayout>
+                </Frame>
+
+            </Grid>
+        </ScrollView>
     </Grid>
 
 </ContentPage>

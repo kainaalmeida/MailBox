@@ -11,6 +11,7 @@ namespace MailBox.Models
         public string EmailHour { get; set; }
         public string Content { get; set; }
         public int Attachments { get; set; }
+        public string Email { get; set; }
         public List<string> AttachmentsItems { get; set; }
 
     }
