@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="MailBox.Templates.EmailTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:MailBox.Converter"
+    xmlns:customs="clr-namespace:MailBox.Customs"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:fontawesome="clr-namespace:MailBox.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:IntToBoolConverter x:Key="IntToBoolConverter" />
+
+            <FontImageSource
+                x:Key="imgClip"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Paperclip}"
+                Size="12"
+                Color="#1FB5EB" />
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Frame
+            Padding="20"
+            BackgroundColor="White"
+            CornerRadius="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    HeightRequest="45"
+                    Source="{Binding Img}"
+                    WidthRequest="45" />
+
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    Spacing="0">
+                    <Label
+                        FontSize="Medium"
+                        Text="{Binding Name}"
+                        TextColor="Black" />
+                    <Label Text="{Binding Subject}" TextColor="Black" />
+                </StackLayout>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    Text="{Binding EmailDate}"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    Text="{Binding EmailHour}"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    VerticalTextAlignment="Center" />
+
+                <customs:EmailBody
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    FontSize="12"
+                    MaxLength="125"
+                    Text="{Binding Content}" />
+
+                <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    IsVisible="{Binding Attachments, Converter={StaticResource IntToBoolConverter}}"
+                    Orientation="Horizontal">
+                    <Image Aspect="AspectFit" Source="{StaticResource imgClip}" />
+                    <Label
+                        FontSize="12"
+                        Text="{Binding Attachments}"
+                        TextColor="#1FB5EB" />
+                    <Label
+                        FontSize="12"
+                        Text="Attachments"
+                        TextColor="#1FB5EB" />
+                </StackLayout>
+
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
