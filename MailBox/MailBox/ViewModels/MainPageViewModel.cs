@@ -1,5 +1,4 @@
-﻿using MailBox.Helpers;
-using MailBox.Models;
+﻿using MailBox.Models;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -7,7 +6,6 @@ namespace MailBox.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        public ObservableCollection<Menu> Menus { get; } = new ObservableCollection<Menu>();
         public ObservableCollection<EmailBox> Emails { get; } = new ObservableCollection<EmailBox>();
 
         private EmailBox _emailBoxSelected;
@@ -32,20 +30,10 @@ namespace MailBox.ViewModels
 
 
         public MainPageViewModel()
-        {
-            LoadMenus();
+        {   
             LoadEmails();
         }
 
-        void LoadMenus()
-        {
-            Menus.Add(new Menu(1, FontAwesomeIcons.Envelope, "Inbox"));
-            Menus.Add(new Menu(2, FontAwesomeIcons.Star, "Flagged"));
-            Menus.Add(new Menu(3, FontAwesomeIcons.EnvelopeOpenText, "Draft"));
-            Menus.Add(new Menu(4, FontAwesomeIcons.PaperPlane, "Sent"));
-            Menus.Add(new Menu(5, FontAwesomeIcons.Trash, "Trash"));
-            Menus.Add(new Menu(6, FontAwesomeIcons.EllipsisH, "More"));
-        }
 
         void LoadEmails()
         {

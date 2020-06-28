@@ -50,6 +50,8 @@
                     <CollectionView
                         Grid.Row="1"
                         ItemsSource="{Binding Menus}"
+                        SelectionChanged="CollectionView_SelectionChanged"
+                        SelectionMode="Single"
                         VerticalOptions="Center">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
