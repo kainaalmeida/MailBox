@@ -5,6 +5,9 @@
 
 ## Em Desenvolvimento...
 
+[Embedded Fonts](https://devblogs.microsoft.com/xamarin/embedded-fonts-xamarin-forms/)
+
+[PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
 
 
 # Design
