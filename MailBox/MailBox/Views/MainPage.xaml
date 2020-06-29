@@ -3,6 +3,7 @@
     x:Class="MailBox.Views.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:MailBox.Customs"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templates="clr-namespace:MailBox.Templates"
@@ -204,23 +205,34 @@
                     Grid.Row="7"
                     Margin="105,0,20,0"
                     Padding="0"
-                    BorderColor="Gray"
+                    BorderColor="#cecece"
                     CornerRadius="10"
                     VerticalOptions="Start">
-                    <StackLayout Orientation="Horizontal" Spacing="15">
-                        <Entry HorizontalOptions="FillAndExpand" Placeholder="Type Message..." />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <custom:CustomEntry
+                            Grid.Column="0"
+                            VerticalOptions="Start"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Type Message..." />
                         <Image
+                            Grid.Column="1"
                             Aspect="AspectFit"
                             HeightRequest="15"
                             Source="{StaticResource imgClipGray}"
                             WidthRequest="15" />
                         <Image
+                            Grid.Column="2"
                             Margin="0,0,10,0"
                             Aspect="AspectFit"
                             HeightRequest="15"
                             Source="{StaticResource imgSent}"
                             WidthRequest="15" />
-                    </StackLayout>
+                    </Grid>
                 </Frame>
 
             </Grid>
