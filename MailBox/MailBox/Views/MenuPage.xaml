@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:views="clr-namespace:MailBox.Views"
-    mc:Ignorable="d">
+    mc:Ignorable="d" MasterBehavior="Default">
 
     <MasterDetailPage.Resources>
         <Style TargetType="StackLayout">
@@ -100,7 +100,7 @@
                                     <Label
                                         x:Name="Name"
                                         Margin="20,0,0,0"
-                                        FontSize="Body"
+                                        FontSize="Medium"
                                         Text="{Binding Name}"
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />

@@ -12,10 +12,6 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-    <ContentPage.BindingContext>
-        <viewModels:MainPageViewModel />
-    </ContentPage.BindingContext>
-
     <Grid ColumnSpacing="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="450" />
@@ -27,7 +23,8 @@
             <SearchBar
                 Margin="20"
                 BackgroundColor="White"
-                Placeholder="Search" />
+                Placeholder="Search"
+                TextChanged="SearchBar_TextChanged" />
 
             <CollectionView
                 x:Name="emails"
