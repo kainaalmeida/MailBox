@@ -11,6 +11,23 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
+    <ContentPage.Resources>
+        <Style TargetType="templates:EmailTemplate">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
     <ContentPage.BindingContext>
         <viewModels:MainPageViewModel />
     </ContentPage.BindingContext>
@@ -29,6 +46,7 @@
                 Placeholder="Search" />
 
             <CollectionView
+                x:Name="emails"
                 Grid.Row="1"
                 Margin="20,0"
                 ItemsSource="{Binding Emails}"

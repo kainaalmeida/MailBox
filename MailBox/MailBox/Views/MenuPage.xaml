@@ -4,8 +4,26 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     mc:Ignorable="d">
+
+    <MasterDetailPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+
+    </MasterDetailPage.Resources>
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu" Padding="0">
@@ -18,7 +36,7 @@
                 <Grid Margin="20" ColumnSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="70" />
-                        <RowDefinition Height="250" />
+                        <RowDefinition Height="300" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -53,9 +71,22 @@
                         SelectionChanged="CollectionView_SelectionChanged"
                         SelectionMode="Single"
                         VerticalOptions="Center">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="3" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout Padding="5" Orientation="Horizontal">
+                                <StackLayout
+                                    x:Name="StackMenu"
+                                    Padding="5"
+                                    Orientation="Horizontal">
+
+                                    <BoxView
+                                        Margin="-5,-5,0,-5"
+                                        IsVisible="{Binding IsChecked}"
+                                        WidthRequest="5"
+                                        Color="#1FB5EB" />
+
                                     <Label
                                         Margin="0,3,0,0"
                                         FontFamily="{StaticResource FontAwesomeSolid}"
@@ -63,7 +94,9 @@
                                         Text="{Binding ImageIcon}"
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
+
                                     <Label
+                                        x:Name="Name"
                                         Margin="20,0,0,0"
                                         FontSize="Body"
                                         Text="{Binding Name}"
@@ -74,13 +107,80 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
-                    <StackLayout Grid.Row="2">
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Large"
-                            Text="Folders"
-                            TextColor="Black" />
-                    </StackLayout>
+                    <Grid Grid.Row="2" RowSpacing="30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Grid.Row="0" Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalOptions="FillAndExpand"
+                                Text="Folders"
+                                TextColor="Black"
+                                VerticalOptions="Center" />
+
+                            <pancake:PancakeView
+                                Padding="15,7,15,7"
+                                HasShadow="True"
+                                Elevation="4"
+                                BackgroundColor="#C7DFEF"
+                                CornerRadius="20"
+                                VerticalOptions="Center">
+                                <Label FontSize="Medium" Text="Add" />
+                            </pancake:PancakeView>
+
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="1"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image
+                                HeightRequest="30"
+                                Source="{StaticResource imgFolderBlue}"
+                                WidthRequest="30" />
+                            <Label FontSize="Medium" Text="Office" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="2"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image
+                                HeightRequest="30"
+                                Source="{StaticResource imgFolderPink}"
+                                WidthRequest="30" />
+                            <Label FontSize="Medium" Text="Personal" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="3"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image
+                                HeightRequest="30"
+                                Source="{StaticResource imgFolderYellow}"
+                                WidthRequest="30" />
+                            <Label FontSize="Medium" Text="Freelance" />
+                        </StackLayout>
+
+                        <Button
+                            Grid.Row="4"
+                            Padding="0,10"
+                            BackgroundColor="#FF5F5F"
+                            CornerRadius="10"
+                            FontSize="Medium"
+                            Text="Compose"
+                            TextColor="White"
+                            VerticalOptions="End" />
+
+                    </Grid>
 
                 </Grid>
             </Frame>

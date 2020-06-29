@@ -59,6 +59,27 @@
                 Color="Gray" />
 
             <FontImageSource
+                x:Key="imgFolderBlue"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Folder}"
+                Size="20"
+                Color="#4664C7" />
+
+            <FontImageSource
+                x:Key="imgFolderPink"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Folder}"
+                Size="20"
+                Color="#FE9699" />
+
+            <FontImageSource
+                x:Key="imgFolderYellow"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Folder}"
+                Size="20"
+                Color="#FED86F" />
+
+            <FontImageSource
                 x:Key="imgTrash"
                 FontFamily="{StaticResource FontAwesomeSolid}"
                 Glyph="{x:Static fontawesome:FontAwesomeIcons.Trash}"

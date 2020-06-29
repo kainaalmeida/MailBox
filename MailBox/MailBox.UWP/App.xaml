@@ -4,5 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MailBox.UWP"
     RequestedTheme="Light">
-
+    <Application.Resources>
+        <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" Color="Transparent" />
+    </Application.Resources>
 </Application>
