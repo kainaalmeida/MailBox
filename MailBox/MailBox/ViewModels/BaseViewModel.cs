@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MailBox.ViewModels
@@ -52,6 +53,11 @@ namespace MailBox.ViewModels
             {
                 SetProperty(ref _isBusy, value);
             }
+        }
+
+        public virtual Task InitializeAsync(object navigationData)
+        {
+            return Task.FromResult(false);
         }
 
     }

@@ -30,18 +30,21 @@ namespace MailBox.ViewModels
         private async Task ExecuteMenuCommand(Models.Menu menu)
         {
             var item = menu;
-
             await Navigation.PushAsync(new MainPage());
         }
 
         public void LoadMenus()
         {
-            Menus.Add(new MailBox.Models.Menu(1, FontAwesomeIcons.Envelope, "Inbox", typeof(MainPage)));
-            Menus.Add(new MailBox.Models.Menu(2, FontAwesomeIcons.Star, "Flagged", typeof(MenuDetailPage)));
-            Menus.Add(new MailBox.Models.Menu(3, FontAwesomeIcons.EnvelopeOpenText, "Draft", typeof(MenuDetailPage)));
-            Menus.Add(new MailBox.Models.Menu(4, FontAwesomeIcons.PaperPlane, "Sent", typeof(MenuDetailPage)));
-            Menus.Add(new MailBox.Models.Menu(5, FontAwesomeIcons.Trash, "Trash", typeof(MenuDetailPage)));
-            Menus.Add(new MailBox.Models.Menu(6, FontAwesomeIcons.EllipsisH, "More", typeof(MenuDetailPage)));
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Menus.Add(new MailBox.Models.Menu(1, FontAwesomeIcons.Envelope, "Inbox", typeof(MainPage)));
+                Menus.Add(new MailBox.Models.Menu(2, FontAwesomeIcons.Star, "Flagged", typeof(MenuDetailPage)));
+                Menus.Add(new MailBox.Models.Menu(3, FontAwesomeIcons.EnvelopeOpenText, "Draft", typeof(MenuDetailPage)));
+                Menus.Add(new MailBox.Models.Menu(4, FontAwesomeIcons.PaperPlane, "Sent", typeof(MenuDetailPage)));
+                Menus.Add(new MailBox.Models.Menu(5, FontAwesomeIcons.Trash, "Trash", typeof(MenuDetailPage)));
+                Menus.Add(new MailBox.Models.Menu(6, FontAwesomeIcons.EllipsisH, "More", typeof(MenuDetailPage)));
+            });
         }
+
     }
 }

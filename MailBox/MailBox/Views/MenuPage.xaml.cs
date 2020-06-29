@@ -10,17 +10,15 @@ namespace MailBox.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : MasterDetailPage
     {
+        private readonly MenuPageViewModel ViewModel;
         public MenuPage()
         {
             InitializeComponent();
-            BindingContext = new MenuPageViewModel(Navigation);
-            Detail = new NavigationPage(new MenuDetailPage());
+            BindingContext = ViewModel = new MenuPageViewModel(Navigation);
         }
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //((CollectionView)sender).SelectedItem = null;
-
             if (e.CurrentSelection.FirstOrDefault() is MailBox.Models.Menu menu)
             {
                 menu.IsChecked = true;
@@ -34,5 +32,6 @@ namespace MailBox.Views
             }
 
         }
+
     }
 }
