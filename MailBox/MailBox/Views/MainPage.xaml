@@ -12,23 +12,6 @@
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-    <ContentPage.Resources>
-        <Style TargetType="templates:EmailTemplate">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="White" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-    </ContentPage.Resources>
-
     <ContentPage.BindingContext>
         <viewModels:MainPageViewModel />
     </ContentPage.BindingContext>
@@ -216,9 +199,9 @@
                         </Grid.ColumnDefinitions>
                         <custom:CustomEntry
                             Grid.Column="0"
-                            VerticalOptions="Start"
                             HorizontalOptions="FillAndExpand"
-                            Placeholder="Type Message..." />
+                            Placeholder="Type Message..."
+                            VerticalOptions="Start" />
                         <Image
                             Grid.Column="1"
                             Aspect="AspectFit"
